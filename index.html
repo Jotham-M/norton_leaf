@@ -92,13 +92,13 @@
           </li>
 
           <li class="navbar-item">
-            <a href="#" class="navbar-link" data-nav-link>
-              <span>CONTACTS</span>
+  <a href="#" class="navbar-link" data-nav-link onclick="toggleContactDetails()">
+    <span>CONTACTS</span>
+    <ion-icon name="chevron-forward"></ion-icon>
+  </a>
+</li>
 
-              <ion-icon name="chevron-forward"></ion-icon>
-            </a>
-          </li>
-          <!-- Hidden contact details -->
+<!-- Hidden contact details -->
 <div id="contact-details" style="display: none; padding: 15px; background-color: #f9f9f9; border-left: 3px solid #27ae60;">
   <p><strong>📍 Address:</strong> 92/97 Plymouth Southerton, Harare, Zimbabwe</p>
   <p><strong>📞 Phone:</strong> +263 242 621 982/83/84/85</p>
@@ -111,7 +111,6 @@
     details.style.display = details.style.display === 'none' ? 'block' : 'none';
   }
 </script>
-          <li>
             <a href="https://maps.app.goo.gl/7Xo7JeQ6gDKctF3t9" class="social-link" target="_blank">
               <ion-icon name="location"></ion-icon>
             </a>
