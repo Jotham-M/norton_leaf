@@ -106,9 +106,25 @@
   <p><strong>🌐 Website:</strong> <a href="https://nortonleaf.co.zw" target="_blank">nortonleaf.co.zw</a></p>
 </div>
 <script>
+  let collapseTimeout;
+
   function toggleContactDetails() {
     const details = document.getElementById('contact-details');
-    details.style.display = details.style.display === 'none' ? 'block' : 'none';
+
+    if (details.style.display === 'none' || details.style.display === '') {
+      details.style.display = 'block';
+
+      // Clear any existing timeout to avoid stacking
+      clearTimeout(collapseTimeout);
+
+      // Set a timeout to hide after 30 seconds
+      collapseTimeout = setTimeout(() => {
+        details.style.display = 'none';
+      }, 30000); // 30,000 milliseconds = 30 seconds
+    } else {
+      details.style.display = 'none';
+      clearTimeout(collapseTimeout); // Cancel auto-collapse if manually hidden
+    }
   }
 </script>
             <a href="https://maps.app.goo.gl/7Xo7JeQ6gDKctF3t9" class="social-link" target="_blank">
