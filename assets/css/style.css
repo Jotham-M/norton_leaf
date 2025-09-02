@@ -162,7 +162,7 @@ body {
 /*-----------------------------------*\
   #REUSED STYLE
 \*-----------------------------------*/
-.hero-slideshow {
+.jm-slideshow {
   position: relative;
   width: 100%;
   height: 100vh; /* Full screen height */
@@ -181,7 +181,7 @@ body {
   transition: opacity 1s ease-in-out;
 }
 
-.hero-content {
+.jm-content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -438,10 +438,10 @@ body {
 
 
 /*-----------------------------------*\
-  #HERO
+  #jm
 \*-----------------------------------*/
 
-.hero {
+.jm {
   position: relative;
   min-height: 100vh;
   background-repeat: no-repeat;
@@ -453,7 +453,7 @@ body {
   z-index: 1;
 }
 
-.section.hero {
+.section.jm {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -471,13 +471,13 @@ body {
 }
 
 
-.hero-content {
+.jm-content {
   background-color: var(--black_60);
   color: var(--white);
   text-align: center;
   padding: 30px;
 }
-.hero-welcome-note {
+.jm-welcome-note {
   font-family: 'Cinzel', serif; /* Elegant, classic typeface */
   font-size: 4.5rem;
   color: hsl(46, 90%, 49%); /* Premium gold tone */
@@ -502,24 +502,24 @@ body {
     opacity: 1;
   }
 }
-.hero-welcome-note:hover {
+.jm-welcome-note:hover {
   text-shadow: 0 0 10px #060119, 0 0 20px #1c0236;
   transform: scale(1.02);
   transition: all 0.3s ease;
 }
 
 @media (max-width: 768px) {
-  .hero-welcome-note {
+  .jm-welcome-note {
     font-size: 1.8rem;
   }
 }
-.hero-title .span {
+.jm-title .span {
   color: var(--dark-orange);
   font-size: var(--fs-2);
   font-weight: var(--fw-700);
 }
 
-.hero-text { margin-block: 20px 15px; }
+.jm-text { margin-block: 20px 15px; }
 
 .btn-outline {
   max-width: max-content;
@@ -537,18 +537,18 @@ body {
   border-color: var(--dark-orange);
 }
 
-.hero-shape {
+.jm-shape {
   position: absolute;
   z-index: -1;
   animation: move 2s ease-in-out infinite alternate;
 }
 
-.hero .shape-1 {
+.jm .shape-1 {
   top: 100px;
   left: 30px;
 }
 
-.hero .shape-2 {
+.jm .shape-2 {
   bottom: 80px;
   right: 30px;
 }
@@ -1066,21 +1066,21 @@ body {
 
 
   /**
-   * HERO
+   * jm
    */
 
-  .hero { justify-content: flex-start; }
+  .jm { justify-content: flex-start; }
 
-  .hero .shape-1 { left: 45px; }
+  .jm .shape-1 { left: 45px; }
 
-  .hero-content {
+  .jm-content {
     background-color: transparent;
     text-align: left;
   }
 
-  .hero-title .span { --fs-2: 6rem; }
+  .jm-title .span { --fs-2: 6rem; }
 
-  .hero-text { max-width: 30ch; }
+  .jm-text { max-width: 30ch; }
 
   .btn-outline { margin-inline: 0; }
 
@@ -1109,12 +1109,12 @@ body {
 
 
   /**
-   * HERO
+   * jm
    */
 
-  .hero-title .span { --fs-2: 7rem; }
+  .jm-title .span { --fs-2: 7rem; }
 
-  .hero-text {
+  .jm-text {
     font-size: var(--fs-7);
     max-width: 40ch;
     margin-block-end: 40px;
@@ -1261,14 +1261,14 @@ body {
 
 
   /**
-   * HERO
+   * jm
    */
   
-  .hero { grid-template-columns: 1fr; }
+  .jm { grid-template-columns: 1fr; }
 
-  .hero-content { padding: 0; }
+  .jm-content { padding: 0; }
 
-  .hero-title .span { --fs-2: 12rem; }
+  .jm-title .span { --fs-2: 12rem; }
 
 
 
@@ -1391,17 +1391,17 @@ body {
 
 
   /**
-   * HERO
+   * jm
    */
 
-  .hero {
+  .jm {
     padding-block-start: 150px;
     background-position: left;
   }
 
-  .hero-title .span { --fs-2: 14rem; }
+  .jm-title .span { --fs-2: 14rem; }
 
-  .hero-text { --fs-7: 2.4rem; }
+  .jm-text { --fs-7: 2.4rem; }
 
 
 
