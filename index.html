@@ -105,7 +105,8 @@
   <p><strong>📧 Email:</strong> <a href="mailto:info@nortonleaf.co.zw">info@nortonleaf.co.zw</a></p>
   <p><strong>🌐 Website:</strong> <a href="https://nortonleaf.co.zw" target="_blank">nortonleaf.co.zw</a></p>
 </div>
-<script>
+
+      <script>
   let collapseTimeout;
 
   function toggleContactDetails() {
@@ -117,16 +118,17 @@
       // Clear any existing timeout to avoid stacking
       clearTimeout(collapseTimeout);
 
-      // Set a timeout to hide after 15 seconds
+      // Set a timeout to hide after 30 seconds
       collapseTimeout = setTimeout(() => {
         details.style.display = 'none';
-      }, 15000); // 15,000 milliseconds = 15 seconds
+      }, 30000); // 30,000 milliseconds = 30 seconds
     } else {
       details.style.display = 'none';
       clearTimeout(collapseTimeout); // Cancel auto-collapse if manually hidden
     }
   }
 </script>
+    <li>
             <a href="https://maps.app.goo.gl/7Xo7JeQ6gDKctF3t9" class="social-link" target="_blank">
               <ion-icon name="location"></ion-icon>
             </a>
@@ -169,18 +171,41 @@
       <!-- 
         - #HERO
       -->
-        <section class="section hero" aria-label="home" id="home">
-  <video autoplay muted loop playsinline class="background-video">
-    <source src="./assets/images/nltbg.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div class="container">
-    
-
-         <div class="hero-content">
+       <section class="section hero" aria-label="home" id="home">
+  <div class="hero-slideshow">
+    <div class="slide fade" style="background-image: url('./assets/images/nltbg.jpeg');"></div>
+    <div class="slide fade" style="background-image: url('./assets/images/leaf.jpg');"></div>
+    <div class="slide fade" style="background-image: url('./assets/images/ware1.jpg');"></div>
+    <div class="slide fade" style="background-image: url('./assets/images/classs.jpg');"></div>
+    <div class="slide fade" style="background-image: url('./assets/images/proc1.jpg');"></div>
+    <div class="hero-content">
   <div class="hero-welcome-note">
     Welcome to Norton Leaf Tobacco — Where Tradition Meets Excellence
   </div>
+  <script>
+  let slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.style.opacity = i === index ? '1' : '0';
+    });
+  }
+
+  setInterval(() => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }, 15000); // 15 seconds
+
+  showSlide(current); // Initial display
+</script>
+  </div>
+</section>
+
+  <div class="container">
+    
+
+         
 </div>
 
 <style>
@@ -237,8 +262,7 @@
             
             </p>
 
-            <img src="./assets/images/img1.png" width="500" height="1000" loading="lazy"
-              class="hero-shape shape-2">
+    
 
           </div>
 
@@ -257,8 +281,7 @@
             <img src="./assets/images/proc1.jpg" width="400" height="720" loading="lazy" alt=""
               class="img-cover">
 
-            <img src="./assets/images/lif7.jpeg" width="260" height="170" loading="lazy" alt=""
-              class="abs-img abs-img-1">
+        
 
             <img src="./assets/images/jm.png" width="500" height="500" loading="lazy" alt=""
               class="abs-img abs-img-2">
