@@ -162,7 +162,56 @@ body {
 /*-----------------------------------*\
   #REUSED STYLE
 \*-----------------------------------*/
+.hero-slideshow {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full screen height */
+  overflow: hidden;
+}
 
+.slide {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.4); /* Optional: adds contrast */
+  border-radius: 8px;
+}
+
+.fade {
+  animation: fadeEffect 1s ease-in-out;
+}
+
+@keyframes fadeEffect {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+.slide::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to bottom right, rgba(0, 0, 50, 0.5), rgba(0, 0, 80, 0.6));
+}
 .container { padding-inline: 15px; }
 
 .section { padding-block: var(--section-padding); }
@@ -333,7 +382,7 @@ body {
 .navbar.active {
   visibility: visible;
   transform: translateX(300px);
-  transition: 0.5s var(--cubic-out);
+  transition: 0.9s var(--cubic-out);
 }
 
 .navbar-top {
@@ -428,7 +477,42 @@ body {
   text-align: center;
   padding: 30px;
 }
+.hero-welcome-note {
+  font-family: 'Cinzel', serif; /* Elegant, classic typeface */
+  font-size: 4.5rem;
+  color: hsl(46, 90%, 49%); /* Premium gold tone */
+  text-shadow: 1px 1px 3px hsl(46, 90%, 49%);
+  background: linear-gradient(to right, #050114, #fff8dc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInSlide 2s ease-out forwards;
+  opacity: 0;
+  text-align: center;
+  letter-spacing: 1px;
+  padding: 20px;
+}
 
+@keyframes fadeInSlide {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.hero-welcome-note:hover {
+  text-shadow: 0 0 10px #060119, 0 0 20px #1c0236;
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .hero-welcome-note {
+    font-size: 1.8rem;
+  }
+}
 .hero-title .span {
   color: var(--dark-orange);
   font-size: var(--fs-2);
@@ -1153,6 +1237,7 @@ body {
    * HEADER
    */
   
+   
   .nav-open-btn,
   .navbar-top,
   .navbar-link > ion-icon { display: none; }
