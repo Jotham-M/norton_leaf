@@ -115,10 +115,10 @@
       // Clear any existing timeout to avoid stacking
       clearTimeout(collapseTimeout);
 
-      // Set a timeout to hide after 30 seconds
+      // Set a timeout to hide after 10 seconds
       collapseTimeout = setTimeout(() => {
         details.style.display = 'none';
-      }, 30000); // 30,000 milliseconds = 30 seconds
+      }, 10000); // 10,000 milliseconds = 10 seconds
     } else {
       details.style.display = 'none';
       clearTimeout(collapseTimeout); // Cancel auto-collapse if manually hidden
