@@ -512,6 +512,10 @@ body {
   .jm-welcome-note {
     font-size: 1.8rem;
   }
+  .jm {
+  display: flex;
+  flex-direction: column;
+}
 }
 .jm-title .span {
   color: var(--dark-orange);
