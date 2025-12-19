@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Norton Leaf Tobacco</title>
 
   <!-- 
@@ -26,12 +26,139 @@
     href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Rubik:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
+  <!-- Notification styles -->
+  <style>
+    /* Notification overlay (fixed at top) */
+    .site-notification {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: linear-gradient(90deg, rgba(3,3,51,0.98), rgba(211, 163, 4, 0.95));
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(8, 1, 41, 0.25);
+      z-index: 9999;
+      height: auto;
+      transform: translateY(-120%);
+      opacity: 0;
+      transition: transform 400ms ease, opacity 400ms ease;
+      font-family: inherit;
+    }
+
+    .site-notification.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .site-notification .notification-content {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex: 1;
+      min-width: 0;
+    }
+    @media (max-width: 640px) {
+  .site-notification {
+    top: 0.6rem;
+    width: calc(100% - 2rem);
+    max-height: 50vh;               /* allow taller box on small screens */
+    padding: 0.75rem;
+    border-radius: 10px;
+  
+  }
+
+    .site-notification .notification-text {
+      display: block;
+      line-height: 1.2;
+      font-size: 1rem;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .site-notification .notification-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .site-notification button.notification-close {
+      appearance: none;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      padding: 0.35rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .site-notification button.notification-close:focus {
+      outline: 3px solid rgba(255,255,255,0.18);
+      outline-offset: 2px;
+    }
+
+    /* Hide using aria-hidden attribute for assistive tech when not visible */
+    .site-notification[aria-hidden="true"] {
+      pointer-events: none;
+    }
+
+    /* Make sure page content doesn't get hidden behind the notification visually,
+       add a small top padding only while notification is visible. This is optional;
+       I've not added automatic body padding adjustments here to avoid interfering
+       with your layout. If you want, I can add it. */
+    @media (max-width: 640px) {
+      .site-notification {
+        padding: 0.75rem 0.9rem;
+        font-size: 0.95rem;
+      }
+
+      .site-notification .notification-text {
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 21;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  </style>
+
   <!-- 
     - preload images
   -->
 </head>
 
 <body id="top">
+
+  <!-- Notification overlay shown on page open for 30s -->
+  <div id="site-notification" class="site-notification" role="region" aria-label="Site notification"
+    aria-hidden="false">
+    <div class="notification-content">
+      <strong class="notification-text">
+        🔔 Norton Leaf Tobacco invites all tobacco farmers to apply for our 2025/2026 grower contracting program.
+         We offer comprehensive input support, including high-quality seeds, fertilizers, and chemicals, alongside 
+         expert agronomic guidance to maximize your yield and leaf quality.
+Secure your partnership by visiting our Grower Registration Portal or visiting our Norton depot
+ with your valid grower number, ID, and land proof.
+Commit to excellence and benefit from competitive pricing and timely payments. 
+ Let’s grow together — 
+We are open and ready to serve. For inquiries call (+263) 242 621982-4.
+      </strong>
+    </div>
+
+    <div class="notification-actions">
+      <!-- Optional action link (uncomment / change if you need) -->
+      <!-- <a href="#contact" class="notification-link" style="color: #fff; text-decoration: underline;">Contact</a> -->
+      <button class="notification-close" id="notification-close" aria-label="Dismiss notification">Close</button>
+    </div>
+  </div>
 
   <!-- 
     - #HEADER
@@ -141,7 +268,7 @@
         <div>
           <p class="contact-label">NLT Admin</p>
 
-          <a href="tel:+(+263) 242 621982-5" class="contact-number">(+263) 242 621982-4</a>
+          <a href="tel:+2632426219824" class="contact-number">(+263) 242 621982-4</a>
         </div>
 
         <div class="contact-icon">
@@ -1175,6 +1302,52 @@ NLT has been actively promoting sustainable tobacco cultivation.
     - custom js link
   -->
   <script src="./assets/js/script.js" defer></script>
+
+  <!-- Notification script (handles auto-hide and manual close) -->
+  <script>
+    (function () {
+      const NOTIFICATION_TIMEOUT = 30000; // 30 seconds
+      const notification = document.getElementById('site-notification');
+      const closeBtn = document.getElementById('notification-close');
+      let hideTimer = null;
+
+      function showNotification() {
+        if (!notification) return;
+        notification.classList.add('show');
+        notification.setAttribute('aria-hidden', 'false');
+
+        // Start auto-hide timer
+        hideTimer = setTimeout(() => {
+          hideNotification();
+        }, NOTIFICATION_TIMEOUT);
+      }
+
+      function hideNotification() {
+        if (!notification) return;
+        notification.classList.remove('show');
+        notification.setAttribute('aria-hidden', 'true');
+
+        // After transition, fully remove from accessibility tree (optional)
+        // We keep the element to allow re-showing if needed.
+        if (hideTimer) {
+          clearTimeout(hideTimer);
+          hideTimer = null;
+        }
+      }
+
+      // Manual close
+      if (closeBtn) {
+        closeBtn.addEventListener('click', hideNotification);
+      }
+
+      // Show when DOM is ready (keeps consistent behavior even if script is moved)
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', showNotification);
+      } else {
+        showNotification();
+      }
+    })();
+  </script>
 
   <!-- 
     - ionicon link
