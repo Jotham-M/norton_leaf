@@ -31,7 +31,7 @@ const products = [
     id: 5,
     title: "WTA2025",
     location: "Rainbow Towers",
-    img: "images/wta3.jpg",
+    img: "images/wta33.jpg",
     desc: " World Tobacco Africa being held at The Rainbow Towers Hotel and ICC"
   },
   {
@@ -104,3 +104,4 @@ function openModal(id) {
 function closeModal(btn) {
   btn.parentElement.parentElement.remove();
 }
+
